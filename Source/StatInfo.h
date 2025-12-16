@@ -1,5 +1,4 @@
-﻿// Project Start Date: 2025.12.15
-// Copyright (c) 2025 HeroChronicle Project by Jongseokb.
+﻿// Statinfo.h
 
 #pragma once
 
@@ -11,3 +10,4 @@ struct StatInfo
 	int AttackDamage; // 물리 공격력
 	int PhysicalDefense; // 물리 방어력
 };
+

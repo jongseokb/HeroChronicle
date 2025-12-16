@@ -1,4 +1,8 @@
-﻿#pragma once
+﻿//Player.h
+
+#include "StatInfo.h"
+
+#pragma once
 
 // 플레이어 종류
 enum class PlayerType
@@ -7,3 +11,20 @@ enum class PlayerType
 	PT_Archor,		// 궁수
 	PT_Wizard		// 마법사
 };
+
+// 플레이어 상세
+struct PlayerInfo
+{
+	// 스탯 변수 선언
+	StatInfo Stat;
+	PlayerType Type;
+};
+
+
+
+
+
+
+
+
+
