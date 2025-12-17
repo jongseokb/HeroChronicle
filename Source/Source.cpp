@@ -10,10 +10,19 @@ int main()
 {
 	GameBase Game;
 
-	// 로비 입장
-	Game.EnterLobby();
+	while (true)
+	{
+		system("cls");
 
-	// 플레이어 결졍
-	Game.PlayerSelect();
+		// 로비 입장
+		Game.EnterLobby();
+
+		// 플레이어 결졍
+		Game.PlayerSelect();
+
+		// 마을 입장
+		Game.EnterVilage();
+	}
+	
 }
 

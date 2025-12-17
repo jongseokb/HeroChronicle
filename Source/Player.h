@@ -1,8 +1,7 @@
 ﻿//Player.h
+#pragma once
 
 #include "StatInfo.h"
-
-#pragma once
 
 // 플레이어 종류
 enum class PlayerType
