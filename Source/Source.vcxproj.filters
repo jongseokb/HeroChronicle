@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Status">
+      <UniqueIdentifier>{2e55e09a-0e05-412b-9f73-6d55420b83b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -34,6 +37,15 @@
     </ClInclude>
     <ClInclude Include="GameBase.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleStatus.h">
+      <Filter>Source Files\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="GameStatus.h">
+      <Filter>Source Files\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleResult.h">
+      <Filter>Source Files\Status</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

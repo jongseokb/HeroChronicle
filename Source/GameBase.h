@@ -4,6 +4,9 @@
 
 #include "Player.h"
 #include "Monster.h"
+#include "GameStatus.h"
+#include "BattleStatus.h"
+#include "BattleResult.h"
 
 
 class GameBase
@@ -21,7 +24,7 @@ public:
 	const char* PlayerTypeToString(PlayerType type);
 
 	// 마을 입장
-	void EnterVilage();
+	void EnterTown();
 
 	// 기사 스탯 정보
 	void KnightStatInfo();
@@ -44,13 +47,49 @@ public:
 	// 던전 입장
 	void EnterDungeon();
 
+	// 게임 종료
+	void ExitGame();
+
+	// 전투하기
+	void EnterBattle();
+
+	// 상태에 따른 함수 호출
+	void CurrentLocation();
+
+	// 로딩 연출
+	void PrintWinDots(const string& Text, int DotCount, int Delay);
+
+	// 전투 시작 
+	void BattleStart();
+
+	// 전투 진입
+	void RunBattle();
+
+	// 전투 중
+	void BattleAction();
+
+	// 전투 결과
+	void BattleResult(const EBattleResult Result);
+
+	// 게임 종료
+	bool IsGameEnd()const;
+
 protected:
+
 	// 플레이어 정보 변수 선언
 	PlayerInfo Player;
 
 	// 몬스터 정보 변수 선언
 	MonsterInfo Monster;
 
+	// 게임 상태 변수 선언
+	GameStatus Status = GameStatus::LOBBY;
+
+	// .배틀 상태 변수 선언
+	BattleStatus BStatus = BattleStatus::BATTLE_SEARCH;
+
+	// 배틀 결과 선언
+	EBattleResult BResult = EBattleResult::DRAW;
 	
 	//enum class MonsterType
 	//{

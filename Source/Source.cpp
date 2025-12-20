@@ -6,23 +6,22 @@ using namespace std;
 #include <iostream>
 #include "GameBase.h"
 
+
 int main()
 {
+	// 랜덤 함수 사용
+	srand((unsigned int)time(nullptr));
+
 	GameBase Game;
 
-	while (true)
+	while (!Game.IsGameEnd())
 	{
 		system("cls");
 
-		// 로비 입장
-		Game.EnterLobby();
+		Game.CurrentLocation();
 
-		// 플레이어 결졍
-		Game.PlayerSelect();
 
-		// 마을 입장
-		Game.EnterVilage();
 	}
-	
+
 }
 

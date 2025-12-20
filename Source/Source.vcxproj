@@ -127,7 +127,10 @@
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleResult.h" />
+    <ClInclude Include="BattleStatus.h" />
     <ClInclude Include="GameBase.h" />
+    <ClInclude Include="GameStatus.h" />
     <ClInclude Include="Monster.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="StatInfo.h" />
