@@ -74,13 +74,22 @@ public:
 	// 게임 종료
 	bool IsGameEnd()const;
 
+	// 회복 하기
+	void RecoverHp();
+
 protected:
 
 	// 플레이어 정보 변수 선언
 	PlayerInfo Player;
 
+	// 플레이어 정보 포인터 선언
+	PlayerInfo* PlayerPtr = &Player;
+
 	// 몬스터 정보 변수 선언
 	MonsterInfo Monster;
+
+	// 몬스터 정보 포인터 선언
+	MonsterInfo* MonsterPtr = &Monster;
 
 	// 게임 상태 변수 선언
 	GameStatus Status = GameStatus::LOBBY;
@@ -90,7 +99,7 @@ protected:
 
 	// 배틀 결과 선언
 	EBattleResult BResult = EBattleResult::DRAW;
-	
+
 	//enum class MonsterType
 	//{
 	//	MT_Orc = 1,		// 오크

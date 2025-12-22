@@ -12,12 +12,16 @@ using namespace std;
 // 로비 입장.
 void GameBase::EnterLobby()
 {
+
+
+
 	// 게임 상태 변경
 	Status = GameStatus::LOBBY;
 
 	Line();
 	cout << "		>>> 환영합니다. 로비에 입장하셨습니다." << endl;
 	Line();
+
 }
 
 
@@ -93,13 +97,7 @@ const char* GameBase::PlayerTypeToString(PlayerType type)
 // 마을 입장
 void GameBase::EnterTown()
 {
-	// 게임 상태 확인
-	if (Status != GameStatus::TOWN)
-	{
-		Status = GameStatus::TOWN;
-	}
-
-	Line();	cout << "		>>> 이제부터 당신은" << PlayerTypeToString(Player.Type) << "로써 모험을 시작하게됩니다." << endl; Line();
+	Line();	cout << "		>>> 이제부터 당신은" << PlayerTypeToString(PlayerPtr->Type) << "로써 모험을 시작하게됩니다." << endl; Line();
 
 	while (true)
 	{
@@ -123,7 +121,7 @@ void GameBase::EnterTown()
 			break;
 
 		case 2:
-
+			Status = GameStatus::SHOP;;
 			return;
 
 		case 3:
@@ -131,7 +129,7 @@ void GameBase::EnterTown()
 			return;
 
 		case 4:
-
+			Status = GameStatus::LOBBY;
 			return;
 
 		default:
@@ -145,63 +143,69 @@ void GameBase::EnterTown()
 // 기사 스탯 정보
 void GameBase::KnightStatInfo()
 {
-	Player.Type = PlayerType::PT_Knight;
-	Player.Stat.Hp = 100;
-	Player.Stat.Mp = 50;
-	Player.Stat.AttackDamage = 30;
-	Player.Stat.PhysicalDefense = 20;
+	PlayerPtr->Type = PlayerType::PT_Knight;
+
+	PlayerPtr->Stat.MaxHp = 120;
+	PlayerPtr->Stat.Hp = PlayerPtr->Stat.MaxHp;
+	PlayerPtr->Stat.Mp = 50;
+	PlayerPtr->Stat.AttackDamage = 35;
+	PlayerPtr->Stat.PhysicalDefense = 20;
 
 	// 화면 정리
 	system("cls");
 
 	Line();
-	cout << "		" << PlayerTypeToString(Player.Type) << "를 선택하셨습니다." << endl;
-	cout << "		- Hp : " << Player.Stat.Hp << endl;
-	cout << "		- Mp : " << Player.Stat.Mp << endl;
-	cout << "		- 물리 공격력 : " << Player.Stat.AttackDamage << endl;
-	cout << "		- 물리 방어력 : " << Player.Stat.PhysicalDefense << endl;
+	cout << "		" << PlayerTypeToString(PlayerPtr->Type) << "를 선택하셨습니다." << endl;
+	cout << "		- Hp : " << PlayerPtr->Stat.Hp << endl;
+	cout << "		- Mp : " << PlayerPtr->Stat.Mp << endl;
+	cout << "		- 물리 공격력 : " << PlayerPtr->Stat.AttackDamage << endl;
+	cout << "		- 물리 방어력 : " << PlayerPtr->Stat.PhysicalDefense << endl;
 	Line();
 }
 
 // 궁수 스탯 정보
 void GameBase::ArchorStatInfo()
 {
-	Player.Type = PlayerType::PT_Archor;
-	Player.Stat.Hp = 80;
-	Player.Stat.Mp = 50;
-	Player.Stat.AttackDamage = 20;
-	Player.Stat.PhysicalDefense = 15;
+	PlayerPtr->Type = PlayerType::PT_Archor;
+
+	PlayerPtr->Stat.MaxHp = 80;
+	PlayerPtr->Stat.Hp = PlayerPtr->Stat.MaxHp;
+	PlayerPtr->Stat.Mp = 70;
+	PlayerPtr->Stat.AttackDamage = 25;
+	PlayerPtr->Stat.PhysicalDefense = 15;
 
 	// 화면 정리
 	system("cls");
 
 	Line();
-	cout << "		" << PlayerTypeToString(Player.Type) << "를 선택하셨습니다." << endl;
-	cout << "		- Hp : " << Player.Stat.Hp << endl;
-	cout << "		- Mp : " << Player.Stat.Mp << endl;
-	cout << "		- 물리 공격력 : " << Player.Stat.AttackDamage << endl;
-	cout << "		- 물리 방어력 : " << Player.Stat.PhysicalDefense << endl;
+	cout << "		" << PlayerTypeToString(PlayerPtr->Type) << "를 선택하셨습니다." << endl;
+	cout << "		- Hp : " << PlayerPtr->Stat.Hp << endl;
+	cout << "		- Mp : " << PlayerPtr->Stat.Mp << endl;
+	cout << "		- 물리 공격력 : " << PlayerPtr->Stat.AttackDamage << endl;
+	cout << "		- 물리 방어력 : " << PlayerPtr->Stat.PhysicalDefense << endl;
 	Line();
 }
 
 // 마법사 스탯 정보
 void GameBase::WizardStatInfo()
 {
-	Player.Type = PlayerType::PT_Wizard;
-	Player.Stat.Hp = 60;
-	Player.Stat.Mp = 50;
-	Player.Stat.AttackDamage = 10;
-	Player.Stat.PhysicalDefense = 10;
+	PlayerPtr->Type = PlayerType::PT_Wizard;
+
+	PlayerPtr->Stat.MaxHp = 60;
+	PlayerPtr->Stat.Hp = PlayerPtr->Stat.MaxHp;
+	PlayerPtr->Stat.Mp = 120;
+	PlayerPtr->Stat.AttackDamage = 15;
+	PlayerPtr->Stat.PhysicalDefense = 5;
 
 	// 화면 정리
 	system("cls");
 
 	Line();
-	cout << "		" << PlayerTypeToString(Player.Type) << "를 선택하셨습니다." << endl;
-	cout << "		- Hp : " << Player.Stat.Hp << endl;
-	cout << "		- Mp : " << Player.Stat.Mp << endl;
-	cout << "		- 물리 공격력 : " << Player.Stat.AttackDamage << endl;
-	cout << "		- 물리 방어력 : " << Player.Stat.PhysicalDefense << endl;
+	cout << "		" << PlayerTypeToString(PlayerPtr->Type) << "를 선택하셨습니다." << endl;
+	cout << "		- Hp : " << PlayerPtr->Stat.Hp << endl;
+	cout << "		- Mp : " << PlayerPtr->Stat.Mp << endl;
+	cout << "		- 물리 공격력 : " << PlayerPtr->Stat.AttackDamage << endl;
+	cout << "		- 물리 방어력 : " << PlayerPtr->Stat.PhysicalDefense << endl;
 	Line();
 }
 
@@ -214,11 +218,11 @@ void GameBase::CurrentStatInfo()
 	Line();
 	cout << "						>>>> 캐릭터 정보 <<<< " << endl; cout << endl;
 
-	cout << "						- 직업		: " << PlayerTypeToString(Player.Type) << endl;
-	cout << "						- Hp		: " << Player.Stat.Hp << endl;
-	cout << "						- Mp		: " << Player.Stat.Mp << endl;
-	cout << "						- 물리 공격력	: " << Player.Stat.AttackDamage << endl;
-	cout << "						- 물리 방어력	: " << Player.Stat.PhysicalDefense << endl;
+	cout << "						- 직업		: " << PlayerTypeToString(PlayerPtr->Type) << endl;
+	cout << "						- Hp		: " << PlayerPtr->Stat.Hp << endl;
+	cout << "						- Mp		: " << PlayerPtr->Stat.Mp << endl;
+	cout << "						- 물리 공격력	: " << PlayerPtr->Stat.AttackDamage << endl;
+	cout << "						- 물리 방어력	: " << PlayerPtr->Stat.PhysicalDefense << endl;
 	Line();
 
 }
@@ -229,9 +233,53 @@ void GameBase::Line()
 	cout << "------------------------------------------------------------------------------------------" << endl;
 }
 
-// 상정 정보
+// 상정 입장
 void GameBase::EnterShop()
 {
+	system("cls");
+
+	while (true)
+	{
+		Line();
+		cout << "|		>>>	상점에서는 Hp를 채우고, Mp를 채울수 있습니다.			|" << endl;
+		cout << "|		>>> 상점에 입장하셨습니다. 무엇을 하시겠습니까?				|" << endl;
+		Line();
+
+		cout << "		>>> 행동을 선택해주세요 : Hp 채우기(1), Mp 채우기(2), 나가기(3)" << endl;
+
+		cout << "		번호 : ";
+
+		// 번호 선택
+		int choiceNubmer;
+		cin >> choiceNubmer;;
+
+
+		switch (choiceNubmer)
+		{
+		case 1:
+			RecoverHp();
+
+			break;
+		case 2:
+			break;
+		case 3:
+
+			Status = GameStatus::TOWN;
+			return;
+
+		default:
+
+			// 화면 정리
+			system("cls");
+
+			Line();
+			cout << "		>>> 숫자를 잘못 입력하셨습니다. 다시 입력해주세요." << endl;
+			Line();
+
+			break;
+		}
+	}
+
 }
 
 // 던전 정보
@@ -241,7 +289,7 @@ void GameBase::EnterDungeon()
 	while (true)
 	{
 		Line();
-		cout << "당신은 " << PlayerTypeToString(Player.Type) << "으로써 던전을 모험합니니다." << endl;
+		cout << "당신은 " << PlayerTypeToString(PlayerPtr->Type) << "으로써 던전을 모험합니니다." << endl;
 		Line();
 		cout << "던전안은 음침하고, 소름끼치는 소리가 사방에서 들리고, 누군가 날보고 있는것 처럼 시선이 느껴집니다." << endl;
 		cout << "이제 모험을 합니다. 무엇을 하시겠습니까?" << endl;
@@ -336,18 +384,18 @@ void GameBase::BattleStart()
 	Line();
 	cout << "				>>> 전투를 시작합니다. <<<				" << endl;
 	Line();
-	cout << "		당신은 던전을 탐색하던중," << Monster.Stat.name << "과(와) 마주쳤습니다." << endl;
+	cout << "		당신은 던전을 탐색하던중," << MonsterPtr->Stat.name << "과(와) 마주쳤습니다." << endl;
 	Line();
-	cout << "- 이름 : " << Monster.Stat.name <<
-		"						- 이름 : " << PlayerTypeToString(Player.Type) << endl;
-	cout << "- Hp : " << Monster.Stat.Hp <<
-		"						- Hp : " << Player.Stat.Hp << endl;
-	cout << "- Mp : " << Monster.Stat.Mp <<
-		"						- Mp : " << Player.Stat.Mp << endl;
-	cout << "- 물리 공격력 : " << Monster.Stat.AttackDamage <<
-		"				- 물리 공격력 : " << Player.Stat.AttackDamage << endl;
-	cout << "- 물리 방어력 : " << Monster.Stat.PhysicalDefense <<
-		"				- 물리 방어력 : " << Player.Stat.PhysicalDefense << endl;
+	cout << "- 이름 : " << MonsterPtr->Stat.name <<
+		"						- 이름 : " << PlayerTypeToString(PlayerPtr->Type) << endl;
+	cout << "- Hp : " << MonsterPtr->Stat.Hp <<
+		"						- Hp : " << PlayerPtr->Stat.Hp << endl;
+	cout << "- Mp : " << MonsterPtr->Stat.Mp <<
+		"						- Mp : " << PlayerPtr->Stat.Mp << endl;
+	cout << "- 물리 공격력 : " << MonsterPtr->Stat.AttackDamage <<
+		"				- 물리 공격력 : " << PlayerPtr->Stat.AttackDamage << endl;
+	cout << "- 물리 방어력 : " << MonsterPtr->Stat.PhysicalDefense <<
+		"				- 물리 방어력 : " << PlayerPtr->Stat.PhysicalDefense << endl;
 	Line();
 	cout << "긴장된 순간, 적이 당신을 공격해옵니다." << endl;
 	Line(); cout << endl;
@@ -381,7 +429,7 @@ void GameBase::BattleAction()
 {
 
 	// 인간의 데미지
-	int HeroDamage = Player.Stat.AttackDamage - Monster.Stat.PhysicalDefense;
+	int HeroDamage = PlayerPtr->Stat.AttackDamage - MonsterPtr->Stat.PhysicalDefense;
 
 	// 데미지가 0보다 작으면
 	if (HeroDamage < 0)
@@ -390,7 +438,7 @@ void GameBase::BattleAction()
 	}
 
 	// 몬스터 데미지
-	int MonsterDamage = Monster.Stat.AttackDamage - Player.Stat.PhysicalDefense;
+	int MonsterDamage = MonsterPtr->Stat.AttackDamage - PlayerPtr->Stat.PhysicalDefense;
 
 	// 데미지가 0보다 작으면
 	if (MonsterDamage < 0)
@@ -398,13 +446,13 @@ void GameBase::BattleAction()
 		MonsterDamage = 1;
 	}
 
-	while (Player.Stat.Hp > 0 && Monster.Stat.Hp > 0)
+	while (PlayerPtr->Stat.Hp > 0 && MonsterPtr->Stat.Hp > 0)
 	{
 		// 몬스터 HP에 데미지 적용
-		Monster.Stat.Hp -= HeroDamage;
-		if (Monster.Stat.Hp <= 0)
+		MonsterPtr->Stat.Hp -= HeroDamage;
+		if (MonsterPtr->Stat.Hp <= 0)
 		{
-			Monster.Stat.Hp = 0;
+			MonsterPtr->Stat.Hp = 0;
 			BStatus = BattleStatus::BATTLE_END;
 			BResult = EBattleResult::PLAYER_WIN;
 
@@ -413,25 +461,25 @@ void GameBase::BattleAction()
 
 		system("cls");
 
-		cout << endl;  cout << PlayerTypeToString(Player.Type) << "는 칼을 들어 " <<
-			Monster.Stat.name << "을(를) 공격합니다." << endl;
+		cout << endl;  cout << PlayerTypeToString(PlayerPtr->Type) << "는 칼을 들어 " <<
+			MonsterPtr->Stat.name << "을(를) 공격합니다." << endl;
 
-		cout << Monster.Stat.name << "가" << HeroDamage << "만큼 피해를 입었다." << endl; cout << endl;
+		cout << MonsterPtr->Stat.name << "가" << HeroDamage << "만큼 피해를 입었다." << endl; cout << endl;
 
 		Line();
 
-		cout << PlayerTypeToString(Player.Type) << "의 남은 Hp: " << Player.Stat.Hp <<
-			"          " << Monster.Stat.name << "의 남은 Hp: " << Monster.Stat.Hp << endl;
+		cout << PlayerTypeToString(PlayerPtr->Type) << "의 남은 Hp: " << PlayerPtr->Stat.Hp <<
+			"          " << MonsterPtr->Stat.name << "의 남은 Hp: " << MonsterPtr->Stat.Hp << endl;
 
 		cout.flush();
 		Sleep(1000);
 
 		// 플레이어 Hp에 데미지 적용
-		Player.Stat.Hp -= MonsterDamage;
+		PlayerPtr->Stat.Hp -= MonsterDamage;
 
-		if (Player.Stat.Hp <= 0)
+		if (PlayerPtr->Stat.Hp <= 0)
 		{
-			Player.Stat.Hp = 0;
+			PlayerPtr->Stat.Hp = 0;
 
 			BStatus = BattleStatus::BATTLE_END;
 			BResult = EBattleResult::PLAYER_LOSE;
@@ -446,16 +494,16 @@ void GameBase::BattleAction()
 
 		system("cls");
 
-		cout << endl; cout << Monster.Stat.name << "가 발톱으로 " <<
-			PlayerTypeToString(Player.Type) << "를(을) 공격합니다." << endl;
+		cout << endl; cout << MonsterPtr->Stat.name << "가 발톱으로 " <<
+			PlayerTypeToString(PlayerPtr->Type) << "를(을) 공격합니다." << endl;
 
-		cout << PlayerTypeToString(Player.Type) << "는" << MonsterDamage << "만큼의 피해를 입었다." << endl;
+		cout << PlayerTypeToString(PlayerPtr->Type) << "는" << MonsterDamage << "만큼의 피해를 입었다." << endl;
 		cout << endl;
 
 		Line();
 
-		cout << PlayerTypeToString(Player.Type) << "의 남은 Hp: " << Player.Stat.Hp <<
-			"          " << Monster.Stat.name << "의 남은 Hp: " << Monster.Stat.Hp << endl;
+		cout << PlayerTypeToString(PlayerPtr->Type) << "의 남은 Hp: " << PlayerPtr->Stat.Hp <<
+			"          " << MonsterPtr->Stat.name << "의 남은 Hp: " << MonsterPtr->Stat.Hp << endl;
 
 		cout.flush();
 		Sleep(1000);
@@ -470,11 +518,11 @@ void GameBase::BattleResult(const EBattleResult Result)
 	{
 	case EBattleResult::PLAYER_WIN:
 		cout << endl;	Line();
-		cout << "				>>> 축하합니다! 당신은 " << Monster.Stat.name << " 을(를) 물리쳤습니다! <<<				" << endl;
+		cout << "				>>> 축하합니다! 당신은 " << MonsterPtr->Stat.name << " 을(를) 물리쳤습니다! <<<				" << endl;
 		Line(); cout << endl;
 
 		PrintWinDots("잠시 후 던전으로 이동합니다.", 5, 1000);
-		
+
 
 		// 전투 상태 초기화
 		BStatus = BattleStatus::BATTLE_SEARCH;
@@ -484,7 +532,7 @@ void GameBase::BattleResult(const EBattleResult Result)
 
 	case EBattleResult::PLAYER_LOSE:
 		cout << endl;	Line();
-		cout << "				>>> 당신은 " << Monster.Stat.name << " 에게 패배하고 말았습니다... <<<				" << endl;
+		cout << "				>>> 당신은 " << MonsterPtr->Stat.name << " 에게 패배하고 말았습니다... <<<				" << endl;
 		Line(); cout << endl;
 
 		cout.flush();
@@ -507,9 +555,29 @@ void GameBase::BattleResult(const EBattleResult Result)
 	}
 }
 
+//게임 상태 종료 확인
 bool GameBase::IsGameEnd() const
 {
 	return Status == GameStatus::END;
+}
+
+// 회복 하기
+void GameBase::RecoverHp()
+{
+	// MAXHp보다 작을때만 회복
+	if (PlayerPtr->Stat.Hp < PlayerPtr->Stat.MaxHp)
+	{
+		PlayerPtr->Stat.Hp = PlayerPtr->Stat.MaxHp;
+		PrintWinDots("		>>> 체력을 채웠습니다.			", 3, 500);
+	}
+	else
+	{
+		Line();
+		PrintWinDots("		>>> 체력이 이미 가득 차있습니다.			", 3, 500);
+		Line();
+
+
+	}
 }
 
 
@@ -565,6 +633,10 @@ void GameBase::CurrentLocation()
 		ExitGame();
 		return;
 
+	case GameStatus::SHOP:
+		EnterShop();
+		return;
+
 	default:
 		break;
 	}
@@ -591,56 +663,56 @@ void GameBase::PrintWinDots(const string& Text, int DotCount, int Delay)
 // 몬스터 정보 - 오크
 void GameBase::OrcStatInfo()
 {
-	Monster.Type = MonsterType::MT_Orc;
-	Monster.Stat.name = "오크";
-	Monster.Stat.Hp = 100;
-	Monster.Stat.Mp = 10;
-	Monster.Stat.AttackDamage = 28;
-	Monster.Stat.PhysicalDefense = 10;
+	MonsterPtr->Type = MonsterType::MT_Orc;
+	MonsterPtr->Stat.name = "오크";
+	MonsterPtr->Stat.Hp = 100;
+	MonsterPtr->Stat.Mp = 10;
+	MonsterPtr->Stat.AttackDamage = 28;
+	MonsterPtr->Stat.PhysicalDefense = 10;
 }
 
 // 몬스터 정보 - 고블린
 void GameBase::GoblinStatInfo()
 {
-	Monster.Type = MonsterType::MT_Goblin;
-	Monster.Stat.name = "고블린";
-	Monster.Stat.Hp = 80;
-	Monster.Stat.Mp = 15;
-	Monster.Stat.AttackDamage = 15;
-	Monster.Stat.PhysicalDefense = 9;
+	MonsterPtr->Type = MonsterType::MT_Goblin;
+	MonsterPtr->Stat.name = "고블린";
+	MonsterPtr->Stat.Hp = 50;
+	MonsterPtr->Stat.Mp = 15;
+	MonsterPtr->Stat.AttackDamage = 15;
+	MonsterPtr->Stat.PhysicalDefense = 9;
 }
 
 // 몬스터 정보 - 스켈레톤
 void GameBase::SkeletonStatInfo()
 {
-	Monster.Type = MonsterType::MT_Skeleton;
-	Monster.Stat.name = "스켈레톤";
-	Monster.Stat.Hp = 110;
-	Monster.Stat.Mp = 15;
-	Monster.Stat.AttackDamage = 20;
-	Monster.Stat.PhysicalDefense = 8;
+	MonsterPtr->Type = MonsterType::MT_Skeleton;
+	MonsterPtr->Stat.name = "스켈레톤";
+	MonsterPtr->Stat.Hp = 110;
+	MonsterPtr->Stat.Mp = 15;
+	MonsterPtr->Stat.AttackDamage = 20;
+	MonsterPtr->Stat.PhysicalDefense = 8;
 }
 
 // 몬스터 정보 - 드래곤
 void GameBase::DragonStatInfo()
 {
-	Monster.Type = MonsterType::MT_Dragon;
-	Monster.Stat.name = "드래곤";
-	Monster.Stat.Hp = 120;
-	Monster.Stat.Mp = 200;
-	Monster.Stat.AttackDamage = 45;
-	Monster.Stat.PhysicalDefense = 6;
+	MonsterPtr->Type = MonsterType::MT_Dragon;
+	MonsterPtr->Stat.name = "드래곤";
+	MonsterPtr->Stat.Hp = 120;
+	MonsterPtr->Stat.Mp = 200;
+	MonsterPtr->Stat.AttackDamage = 45;
+	MonsterPtr->Stat.PhysicalDefense = 6;
 }
 
 // 몬스터 정보 - 다크나이트
 void GameBase::DarkKnightStatInfo()
 {
-	Monster.Type = MonsterType::MT_DarkKNight;
-	Monster.Stat.name = "다크나이트";
-	Monster.Stat.Hp = 120;
-	Monster.Stat.Mp = 140;
-	Monster.Stat.AttackDamage = 38;
-	Monster.Stat.PhysicalDefense = 5;
+	MonsterPtr->Type = MonsterType::MT_DarkKNight;
+	MonsterPtr->Stat.name = "다크나이트";
+	MonsterPtr->Stat.Hp = 120;
+	MonsterPtr->Stat.Mp = 140;
+	MonsterPtr->Stat.AttackDamage = 38;
+	MonsterPtr->Stat.PhysicalDefense = 5;
 }
 
 

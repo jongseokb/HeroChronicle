@@ -2,6 +2,7 @@
 #pragma once
 
 #include "StatInfo.h"
+#include "Inventory.h"
 
 // 플레이어 종류
 enum class PlayerType
@@ -17,6 +18,7 @@ struct PlayerInfo
 	// 스탯 변수 선언
 	StatInfo Stat;
 	PlayerType Type;
+
 };
 
 

@@ -123,12 +123,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="DebugLog.cpp" />
     <ClCompile Include="GameBase.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BattleResult.h" />
     <ClInclude Include="BattleStatus.h" />
+    <ClInclude Include="DebugLog.h" />
     <ClInclude Include="GameBase.h" />
     <ClInclude Include="GameStatus.h" />
     <ClInclude Include="Monster.h" />

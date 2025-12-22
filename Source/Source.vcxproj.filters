@@ -16,6 +16,9 @@
     <Filter Include="Source Files\Status">
       <UniqueIdentifier>{2e55e09a-0e05-412b-9f73-6d55420b83b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Info">
+      <UniqueIdentifier>{b8fb51fb-186c-4d51-a3c1-005a46af1331}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source.cpp">
@@ -24,17 +27,11 @@
     <ClCompile Include="GameBase.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="DebugLog.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="StatInfo.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Monster.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameBase.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -46,6 +43,18 @@
     </ClInclude>
     <ClInclude Include="BattleResult.h">
       <Filter>Source Files\Status</Filter>
+    </ClInclude>
+    <ClInclude Include="StatInfo.h">
+      <Filter>Source Files\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Source Files\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Source Files\Info</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugLog.h">
+      <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
